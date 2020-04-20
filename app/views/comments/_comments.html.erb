@@ -3,8 +3,10 @@
   <div class="card mb-4">
     <div class="card-body">
       <p><strong><%= comment.username %></strong>: <%= comment.body %></p>
-      <%= link_to 'Delete comment', [comment.post, comment],
-                  method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger' %>
+      <% if current_user %>
+        <%= link_to 'Delete comment', [comment.post, comment],
+                      method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger' %>
+      <% end %>
     </div>
   </div>
 <% end %>

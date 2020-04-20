@@ -1,9 +1,12 @@
 <h2><%= @post.title %></h2>
 <p><%= @post.body %></p>
-<hr>
-<%= link_to "Edit", edit_post_path(@post), :class => 'btn btn-primary' %>
-<%= link_to "Delete", post_path(@post), method: :delete, data: {confirm: 'Are you sure?'}, :class => 'btn btn-danger' %>
+<% if current_user && current_user.admin %>
+  <%= link_to "Edit", edit_post_path(@post), :class => 'btn btn-primary' %>
+  <%= link_to "Delete", post_path(@post), method: :delete, data: {confirm: 'Are you sure?'}, :class => 'btn btn-danger' %>
+<% end %>
 <hr>
 
 <%= render 'comments/comments' %>
-<%= render 'comments/form' %>
+<% if current_user %>
+  <%= render 'comments/form' %>
+<% end %>
