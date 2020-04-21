@@ -16,6 +16,8 @@ class PostsController < ApplicationController
   def create
     # render plain: params[:post].inspect
     @post = Post.new(post_params)
+    @post.user = current_user
+
     if (@post.save)
       redirect_to @post
     else
@@ -29,7 +31,6 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-
     if (@post.update(post_params))
       redirect_to @post
     else

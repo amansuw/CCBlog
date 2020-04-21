@@ -2,7 +2,7 @@
 <% @post.comments.each do |comment| %>
   <div class="card mb-4">
     <div class="card-body">
-      <p><strong><%= comment.username %></strong>: <%= comment.body %></p>
+      <p><%= comment.body %></p>
       <% if current_user %>
         <%= link_to 'Delete comment', [comment.post, comment],
                       method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger' %>
