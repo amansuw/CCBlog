@@ -1,5 +1,4 @@
 class PostsController < ApplicationController
-  # http_basic_authenticate_with name: "aman", password:'testpassword', except: [:index, :show]
   before_action :authenticate_user!, except: [:show, :index]
   def index
     @post = Post.all
@@ -14,7 +13,6 @@ class PostsController < ApplicationController
   end
 
   def create
-    # render plain: params[:post].inspect
     @post = Post.new(post_params)
     @post.user = current_user
 
